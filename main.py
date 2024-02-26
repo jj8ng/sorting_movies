@@ -54,10 +54,10 @@ def main(input_movies):
     
     movies_df = pd.read_csv('data/movies_metadata.csv')
     ratings_df = pd.read_csv('data/ratings_small.csv')
-    movies_df = drop_trash_data(movies_df)
+    movies_df = data_removal(movies_df)
     
-    apriori_result = do_apriori(input_movies, movies_df, ratings_df)
-    kmeans_result = do_kmeans(apriori_result, input_movies, movies_df)
+    apriori_result = apri(input_movies, movies_df, ratings_df)
+    kmeans_result = kmea(apriori_result, input_movies, movies_df)
     
     final_result += "A-priori & K-means clustering recommend movie : " + ",".join(kmeans_result) + "\n\n"
     
